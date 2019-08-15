@@ -25,22 +25,24 @@ GLuint Buffers[NumBuffers];
 void init (void)
 {
 	static const GLfloat vertices[NumVertices][2] = {
-		{-0.90f, 0.90f}, //here start triangle 1
-		{0.85f, 0.90f},
-		{-0.90f, 0.85f},
-		{0.90f, 0.85f}, // here start triangle 2
-		{0.90f, 0.90f},
-		{-0.85f, 0.90f}
+		// x      y
+		{-0.90, -0.90}, //here start triangle 1
+		{0.90, -0.90},
+		{0.60, 0.60},
+		{0.60, -0.90}, // here start triangle 2
+		{-0.60, 0.60},
+		{-0.90, -0.90}
 	};
-	
+
 	glCreateVertexArrays(NumVAOs, VAOs);
+	glBindVertexArray(VAOs[Triangles]);
 	glCreateBuffers(NumBuffers, Buffers);
 	glNamedBufferStorage(Buffers[ArrayBuffer],
 			     sizeof(vertices),
 			     vertices,
 			     0);
 
-	glBindVertexArray(VAOs[Triangles]);
+
 	glBindBuffer(GL_ARRAY_BUFFER, Buffers[ArrayBuffer]);
 	glVertexAttribPointer(vPosition, 2, GL_FLOAT,
 			      GL_FALSE, 0,  0);
