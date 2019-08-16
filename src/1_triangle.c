@@ -17,10 +17,13 @@ GLuint VAOs[NumVAOs];
 GLuint Buffers[NumBuffers];
 
 /**
- * init - This function start the settup of the OpenGL context
- * description: Here you will found the data needed to build two
- * triangles at screen. You will create the buffer, bind the
- * VAOs objects to the Opengl Context.
+ * init - Función que inicia los datos y el contexto de OpenGL
+ * description: Esta funcion inicializa cada VAO, VBO y los enlaza con el
+ * contexto de OpenGL (GPU), una vez inicializados, se especifica el diseño en
+ * memoria del array de vertices (VAO) y se habilitan los primeros
+ * componentes a ser manipulados por OpenGL.
+ *
+ * return: void, o nada.
  */
 void init (void)
 {
@@ -58,7 +61,7 @@ void display(void)
 	glClearBufferfv(GL_COLOR, 0, black);
 
 	glBindVertexArray(VAOs[Triangles]);
-	glDrawArrays(GL_TRIANGLES, 0, NumVertices);
+	glDrawArrays(GL_POINTS, 0, NumVertices);
 }
 /**
  * main
